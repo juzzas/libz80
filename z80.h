@@ -40,11 +40,11 @@ typedef unsigned char byte;
 
 
 /** Function type to emulate data read. */
-typedef byte (*Z80DataIn) 	(int param, ushort address);
+typedef byte (*Z80DataIn) 	(void* param, ushort address);
 
 
 /** Function type to emulate data write. */
-typedef void (*Z80DataOut)	(int param, ushort address, byte data);
+typedef void (*Z80DataOut)	(void* param, ushort address, byte data);
 
 
 /** 
@@ -95,11 +95,11 @@ typedef struct
 	
 	Z80DataIn	memRead;
 	Z80DataOut	memWrite;
-	int			memParam;
+	void*		memParam;
 	
 	Z80DataIn	ioRead;
 	Z80DataOut	ioWrite;
-	int			ioParam;
+	void*		ioParam;
 	
 	byte		halted;
 	unsigned	tstates;
